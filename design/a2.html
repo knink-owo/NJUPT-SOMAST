@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>管院科协 · 南京邮电大学管理学院科学与技术协会</title>
+<meta name="description" content="南京邮电大学管理学院科学与技术协会（管院科协）主页：三个中心、八个部门、八项经典赛事。">
+<link rel="stylesheet" href="base.css">
+<style>
+/* ============ 变体 A2：数据手册 ============ */
+/* 特征：标题横向铺满 + 通栏数据条、部门做成 ledger 行、赛事表格化、图位 2 列、加入区分栏 */
+
+.hero-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero .h1-xl {
+  font-size: clamp(42px, 7.4vw, 88px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  margin: 18px 0 0;
+}
+
+.hero-sub-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(24px, 5vw, 72px);
+  margin-top: 26px;
+}
+
+.hero-sub-row .sub {
+  max-width: 46ch;
+  margin: 0;
+}
+
+/* 通栏数据条 */
+.data-band {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: clamp(38px, 5.5vw, 68px);
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+
+.data-item {
+  padding: 20px 0 24px;
+  border-right: 1px solid var(--line);
+}
+
+.data-item:last-child {
+  border-right: 0;
+}
+
+.data-item:nth-child(n + 2) {
+  padding-left: clamp(16px, 2.4vw, 32px);
+}
+
+.data-num {
+  font-family: var(--font-mono);
+  font-size: clamp(30px, 3.4vw, 44px);
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.data-label {
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: var(--ink-2);
+}
+
+.data-note {
+  margin-top: 3px;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* 关于：规格表 */
+.about-2 {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(32px, 5vw, 72px);
+  margin-top: 40px;
+  align-items: start;
+}
+
+.about-2 .about-copy p {
+  font-size: 15.5px;
+  line-height: 1.95;
+  color: var(--ink-2);
+  max-width: 42ch;
+}
+
+.about-2 .about-copy p + p {
+  margin-top: 16px;
+}
+
+.spec {
+  border-top: 2px solid var(--ink);
+}
+
+.spec-row {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 18px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+
+.spec-key {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.spec-val {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.spec-val .tag {
+  margin: 0 6px 6px 0;
+}
+
+.spec-val .tags {
+  margin-top: 2px;
+}
+
+/* 部门 ledger */
+.ledger-group {
+  margin-top: clamp(34px, 4.5vw, 52px);
+}
+
+.ledger-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.ledger-head h3 {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.ledger-head .mono {
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+}
+
+.ledger-row {
+  display: grid;
+  grid-template-columns: 44px minmax(150px, 0.75fr) minmax(0, 1.85fr) auto;
+  gap: clamp(14px, 2.6vw, 38px);
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: start;
+}
+
+.row-idx {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--muted);
+  padding-top: 6px;
+}
+
+.row-name h4 {
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.row-en {
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.row-slogan {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.65;
+  letter-spacing: 0;
+}
+
+.row-body p {
+  margin-top: 7px;
+  font-size: 13.5px;
+  line-height: 1.85;
+  color: var(--ink-2);
+}
+
+.row-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+  max-width: 210px;
+  padding-top: 2px;
+}
+
+/* 赛事表 */
+.etable {
+  margin-top: 30px;
+  border-top: 2px solid var(--ink);
+}
+
+.etable-head,
+.etable-row {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1.35fr) minmax(150px, 0.72fr) minmax(0, 1.7fr);
+  gap: clamp(12px, 2.2vw, 30px);
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+
+.etable-head {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.etable-row .no {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--muted);
+}
+
+.etable-row h3 {
+  font-size: 14.5px;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.etable-row .host {
+  font-size: 12.5px;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+.etable-row .desc {
+  font-size: 12.5px;
+  line-height: 1.8;
+  color: var(--ink-2);
+}
+
+/* 图位 2 列 */
+.shots-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(14px, 2vw, 22px);
+  margin-top: 28px;
+}
+
+.ph {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(135deg, transparent calc(50% - 0.5px), var(--line) calc(50% - 0.5px), var(--line) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+    linear-gradient(45deg, transparent calc(50% - 0.5px), var(--line) calc(50% - 0.5px), var(--line) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+    var(--paper-2);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 14px 16px;
+}
+
+.ph figcaption {
+  font-size: 11.5px;
+  color: var(--ink-2);
+  letter-spacing: 0.02em;
+}
+
+.ph .mono {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+}
+
+/* 加入：分栏 */
+.join-2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(30px, 5vw, 72px);
+  margin-top: 34px;
+  align-items: start;
+}
+
+.join-num {
+  font-family: var(--font-mono);
+  font-size: clamp(34px, 5vw, 62px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-top: 6px;
+}
+
+.join-2 .join-statement {
+  font-size: clamp(20px, 2.2vw, 27px);
+  line-height: 1.45;
+  font-weight: 700;
+  max-width: 24ch;
+}
+
+.join-2 .join-copy {
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--ink-2);
+  max-width: 44ch;
+}
+
+.join-side {
+  border-top: 2px solid var(--ink);
+  padding-top: 18px;
+}
+
+.qr-inline {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.qr-box {
+  width: 132px;
+  height: 132px;
+  flex: none;
+  border: 1px solid var(--line-strong);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  line-height: 1.6;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  background: repeating-linear-gradient(90deg, transparent 0 7px, var(--paper-2) 7px 8px);
+}
+
+.addr-2 {
+  margin-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.addr-2 address {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr);
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  font-style: normal;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.addr-2 .mono {
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+@media (max-width: 1024px) {
+  .data-band {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .data-item:nth-child(2) {
+    border-right: 0;
+  }
+
+  .data-item:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .about-2,
+  .join-2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ledger-row {
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 6px 14px;
+  }
+
+  .row-name {
+    grid-column: 2;
+  }
+
+  .row-body {
+    grid-column: 2;
+  }
+
+  .row-tags {
+    grid-column: 2;
+    justify-content: flex-start;
+    max-width: none;
+  }
+
+  .etable-head {
+    display: none;
+  }
+
+  .etable-row {
+    grid-template-columns: 30px minmax(0, 1fr);
+    gap: 4px 12px;
+  }
+
+  .etable-row h3,
+  .etable-row .host,
+  .etable-row .desc {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 720px) {
+  .data-band {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero-sub-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .shots-2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .qr-inline {
+    align-items: flex-start;
+  }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="管院科协 首页">
+      <svg class="brand-mark" viewBox="0 0 25 25" aria-hidden="true">
+        <rect x="0.75" y="0.75" width="23.5" height="23.5" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+        <line x1="0.75" y1="12.5" x2="24.25" y2="12.5" stroke="currentColor" stroke-width="1"></line>
+        <rect class="mark-accent" x="12.5" y="0.75" width="11.75" height="11.75"></rect>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-cn">管院科协</span>
+        <span class="brand-en">SOMAST</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#about">关于</a>
+      <a href="#departments">部门</a>
+      <a href="#events">赛事</a>
+      <a href="#gallery">现场</a>
+      <a href="#join" class="nav-cta">加入我们</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div class="hero-top">
+        <p class="kicker">南京邮电大学管理学院 · 科学与技术协会</p>
+        <h1 class="h1-xl">把想法做成作品。</h1>
+        <div class="hero-sub-row">
+          <p class="sub">三个中心、八个部门、八项经典赛事。从策划一场活动，到拿下一个奖项，都有人陪你走完。</p>
+          <a class="btn" href="#departments">了解八个部门 <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="data-band" aria-label="协会数据">
+        <div class="data-item">
+          <p class="data-num">03</p>
+          <p class="data-label">中心</p>
+          <p class="data-note">科研 · 办公 · 活动</p>
+        </div>
+        <div class="data-item">
+          <p class="data-num">08</p>
+          <p class="data-label">部门</p>
+          <p class="data-note">技术 · 策划 · 宣传 · 辩论</p>
+        </div>
+        <div class="data-item">
+          <p class="data-num">08</p>
+          <p class="data-label">经典赛事</p>
+          <p class="data-note">从院赛到校赛</p>
+        </div>
+        <div class="data-item">
+          <p class="data-num">02</p>
+          <p class="data-label">校区</p>
+          <p class="data-note">三牌楼 · 仙林</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow mono">关于科协</p>
+        <h2 class="title">一个把技术与管理放在一起练的地方。</h2>
+      </div>
+      <div class="about-2">
+        <div class="about-copy">
+          <p>南京邮电大学管理学院科学与技术协会（简称管院科协）由学院党委领导、学院团委指导，是面向管院学子的学术科技类学生团体，也是学院里规模最大的学习与竞赛交流平台之一。</p>
+          <p>我们围绕学科竞赛、学术研究、发明创造、创新创业训练与科普宣传开展工作。院赛的组委会、赛前的培训课、活动当天的设备与现场，基本都是科协的人在跑。</p>
+        </div>
+        <div class="spec" aria-label="协会信息">
+          <div class="spec-row">
+            <span class="spec-key">全称</span>
+            <span class="spec-val">南京邮电大学管理学院科学与技术协会</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">简称</span>
+            <span class="spec-val">管院科协 / SOMAST</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">性质</span>
+            <span class="spec-val">学术科技类学生团体，学院党委领导、学院团委指导</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">宗旨</span>
+            <span class="spec-val">传播科学知识，开展科技活动，弘扬科学精神，培养创新人才</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">工作方向</span>
+            <span class="spec-val">
+              <span class="tags"><span class="tag">学科竞赛</span><span class="tag">学术研究</span><span class="tag">发明创造</span><span class="tag">创新创业训练</span><span class="tag">科普宣传</span></span>
+            </span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">构成</span>
+            <span class="spec-val">主席 1 名 · 副主席 2 名 · 主任 3 名（分管中心）· 八部门</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="org" aria-label="组织架构图">
+        <div class="org-cap">
+          <span class="mono">组织架构 / Org Chart</span>
+          <span class="mono">三中心 · 八部门</span>
+        </div>
+        <div class="org-root">管院科协</div>
+        <div class="org-trunk"></div>
+        <div class="org-bar"></div>
+        <div class="org-cols">
+          <div class="org-col">
+            <div class="org-center">科研中心</div>
+            <div class="org-depts">
+              <span class="org-dept">网技部</span>
+              <span class="org-dept">软技部</span>
+              <span class="org-dept">信技部</span>
+            </div>
+          </div>
+          <div class="org-col">
+            <div class="org-center">办公中心</div>
+            <div class="org-depts">
+              <span class="org-dept">组策部</span>
+              <span class="org-dept">办公室</span>
+            </div>
+          </div>
+          <div class="org-col">
+            <div class="org-center">活动中心</div>
+            <div class="org-depts">
+              <span class="org-dept">外联部</span>
+              <span class="org-dept">E宣部</span>
+              <span class="org-dept">辩论队</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="departments">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="title">三个中心，八个部门。</h2>
+        <p class="lede">技术、策划、宣传、辩论各有一条线。每个部门都有自己的活儿和脾气。</p>
+      </div>
+
+      <div class="ledger-group">
+        <div class="ledger-head">
+          <h3>科研中心</h3>
+          <span class="mono">RESEARCH CENTER / 03 DEPTS</span>
+        </div>
+        <article class="ledger-row">
+          <span class="row-idx">01</span>
+          <div class="row-name">
+            <h4>网技部</h4>
+            <p class="row-en">Visual Tech</p>
+          </div>
+          <div class="row-body">
+            <p class="row-slogan">海报、视频、舞台视觉，从这里出厂。</p>
+            <p>新媒体设计大赛和海报设计大赛由我们组织与培训；科协每场晚会的视频、活动海报、立牌、宣传幅也在这里产出。我们开 PS、PR 课程，从零基础练到能独立出片。</p>
+          </div>
+          <div class="row-tags"><span class="tag">平面设计</span><span class="tag">视频剪辑</span><span class="tag">PS · PR</span></div>
+        </article>
+        <article class="ledger-row">
+          <span class="row-idx">02</span>
+          <div class="row-name">
+            <h4>软技部</h4>
+            <p class="row-en">Software Tech</p>
+          </div>
+          <div class="row-body">
+            <p class="row-slogan">科协的技术小管家，设备、软件、编程干货都归我们。</p>
+            <p>活动现场的设备调试、软件安装答疑、编程干货分享，都是软技部的主场。没有大佬门槛，零基础也可以来玩，一起解锁实用软件技能，在科创赛事里积攒实战经验。技术不枯燥，快乐搞科创。</p>
+          </div>
+          <div class="row-tags"><span class="tag">设备调试</span><span class="tag">软件答疑</span><span class="tag">零基础友好</span></div>
+        </article>
+        <article class="ledger-row">
+          <span class="row-idx">03</span>
+          <div class="row-name">
+            <h4>信技部</h4>
+            <p class="row-en">Information Tech</p>
+          </div>
+          <div class="row-body">
+            <p class="row-slogan">把 Office 和计算机二级，变成你的基本功。</p>
+            <p>信技部全称信息技术与应用部。我们用系统化的 Office 培训带你练熟文档处理、数据统计与演示文稿，也为计算机二级考试提供备考指导。科协办活动，技术保障这边也归我们。</p>
+          </div>
+          <div class="row-tags"><span class="tag">Office 培训</span><span class="tag">计算机二级</span><span class="tag">活动保障</span></div>
+        </article>
+      </div>
+
+      <div class="ledger-group">
+        <div class="ledger-head">
+          <h3>办公中心</h3>
+          <span class="mono">OPERATIONS CENTER / 02 DEPTS</span>
+        </div>
+        <article class="ledger-row">
+          <span class="row-idx">04</span>
+          <div class="row-name">
+            <h4>组策部</h4>
+            <p class="row-en">Event Planning</p>
+          </div>
+          <div class="row-body">
+            <p class="row-slogan">从 0 到 1，把一场活动完整落地。</p>
+            <p>组策部是科协活动的基石。创新杯、挑战杯等重大赛事的筹备，科协全体会议和冬至包饺子，从写策划书、统筹物资人员到现场调度，都由我们推着走。想练统筹力、执行力与领导力，这里是最近的路。</p>
+          </div>
+          <div class="row-tags"><span class="tag">活动策划</span><span class="tag">现场统筹</span><span class="tag">执行力</span></div>
+        </article>
+        <article class="ledger-row">
+          <span class="row-idx">05</span>
+          <div class="row-name">
+            <h4>办公室</h4>
+            <p class="row-en">Admin Office</p>
+          </div>
+          <div class="row-body">
+            <p class="row-slogan">科协的大管家，也是主席团与部员之间的连接。</p>
+            <p>办公室担任创新杯等重大赛事的组委会主要成员，协助院赛开展；也负责会议记录、活动实施、值班安排等日常行政。工作之外，周末团建和娱乐活动也不会少。</p>
+          </div>
+          <div class="row-tags"><span class="tag">赛事组委会</span><span class="tag">行政统筹</span><span class="tag">团队氛围</span></div>
+        </article>
+      </div>
+
+      <div class="ledger-group">
+        <div class="ledger-head">
+          <h3>活动中心</h3>
+          <span class="mono">ACTIVITY CENTER / 03 DEPTS</span>
+        </div>
+        <article class="ledger-row">
+          <span class="row-idx">06</span>
+          <div class="row-name">
+            <h4>外联部</h4>
+            <p class="row-en">Outreach</p>
+          </div>
+          <div class="row-body">
+            <p class="row-slogan">活动需要的人和资源，我们去找。</p>
+            <p>外联部主办创意营销大赛，也协助校科技节顺利开展。奖品采购、活动资源保证、财务记录与报账，以及拉赞助、与商家建立长期合作，都是外联要跑的事。</p>
+          </div>
+          <div class="row-tags"><span class="tag">创意营销大赛</span><span class="tag">赞助合作</span><span class="tag">资源统筹</span></div>
+        </article>
+        <article class="ledger-row">
+          <span class="row-idx">07</span>
+          <div class="row-name">
+            <h4>E宣部</h4>
+            <p class="row-en">Media &amp; PR</p>
+          </div>
+          <div class="row-body">
+            <p class="row-slogan">科协的声音，从这里发出去。</p>
+            <p>E宣部负责公众号推文的撰写与排版，同时统筹科协 QQ、抖音、B 站等新媒体平台的日常运营维护。写文案、做视觉、拍现场，把科协的活动成果与部门风貌传出去，就是我们的活儿。</p>
+          </div>
+          <div class="row-tags"><span class="tag">公众号运营</span><span class="tag">新媒体矩阵</span><span class="tag">摄影剪辑</span></div>
+        </article>
+        <article class="ledger-row">
+          <span class="row-idx">08</span>
+          <div class="row-name">
+            <h4>辩论队</h4>
+            <p class="row-en">Debate Team</p>
+          </div>
+          <div class="row-body">
+            <p class="row-slogan">把话说清楚，把理讲明白。</p>
+            <p>辩论队每周有日常队训，代表管理学院参加各级辩论比赛，也策划组织新生辩论赛、清廉杯与薪火杯。逻辑、表达、临场反应，都是练出来的。</p>
+          </div>
+          <div class="row-tags"><span class="tag">日常队训</span><span class="tag">院队出战</span><span class="tag">新生赛</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="events">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="title">八项经典赛事，从院赛打到校赛。</h2>
+        <p class="lede">这些比赛大多由科协承办或协办，组委会、培训课、现场保障都从这里出人。</p>
+      </div>
+
+      <div class="etable" role="table" aria-label="经典赛事">
+        <div class="etable-head" role="row">
+          <span role="columnheader">No.</span>
+          <span role="columnheader">赛事</span>
+          <span role="columnheader">承办</span>
+          <span role="columnheader">说明</span>
+        </div>
+        <div class="etable-row" role="row">
+          <span class="no">01</span>
+          <h3 role="cell">“创新杯”大学生课外学术科技竞赛</h3>
+          <span class="host">办公室 · 科研中心</span>
+          <span class="desc">面向全院学生的课外学术科技作品竞赛，科协承担院赛的组织与组委会工作。</span>
+        </div>
+        <div class="etable-row" role="row">
+          <span class="no">02</span>
+          <h3 role="cell">“挑战杯”大学生创业计划竞赛</h3>
+          <span class="host">办公室 · 组策部</span>
+          <span class="desc">创业计划类竞赛，从院赛选拔到校赛推荐，赛事筹备由科协协同推进。</span>
+        </div>
+        <div class="etable-row" role="row">
+          <span class="no">03</span>
+          <h3 role="cell">“创新、创意、创业”电子商务三创赛</h3>
+          <span class="host">办公室</span>
+          <span class="desc">电商方向的创意与创业实践赛，学院参赛队伍的组织与院赛保障在这里。</span>
+        </div>
+        <div class="etable-row" role="row">
+          <span class="no">04</span>
+          <h3 role="cell">新媒体设计大赛</h3>
+          <span class="host">网技部</span>
+          <span class="desc">平面与新媒体作品的设计竞赛，由网技部负责组织与赛前培训。</span>
+        </div>
+        <div class="etable-row" role="row">
+          <span class="no">05</span>
+          <h3 role="cell">海报设计大赛</h3>
+          <span class="host">网技部</span>
+          <span class="desc">围绕海报与视觉表达的比赛，从命题到评审都由网技部牵头。</span>
+        </div>
+        <div class="etable-row" role="row">
+          <span class="no">06</span>
+          <h3 role="cell">创意营销大赛</h3>
+          <span class="host">外联部</span>
+          <span class="desc">外联部主办的营销策划类赛事，方案、资源与落地一起练。</span>
+        </div>
+        <div class="etable-row" role="row">
+          <span class="no">07</span>
+          <h3 role="cell">“清廉杯”辩论赛</h3>
+          <span class="host">辩论队</span>
+          <span class="desc">学院辩论赛事之一，辩论队负责赛制、组队、评审与现场组织。</span>
+        </div>
+        <div class="etable-row" role="row">
+          <span class="no">08</span>
+          <h3 role="cell">南京邮电大学科技节子项目</h3>
+          <span class="host">组策部 · 外联部</span>
+          <span class="desc">校科技节期间由科协承办的子项目，把活动策划与资源协调搬到更大的舞台。</span>
+        </div>
+      </div>
+
+      <div class="extra">
+        <span class="mono">日常品牌活动</span>
+        <span class="chip">柚子服务周</span>
+        <span class="chip">“邮”我一定过冬令营</span>
+        <span class="chip">冬至包饺子</span>
+        <span class="chip">科协全体会议</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="title">现场。</h2>
+        <p class="lede">活动、晚会、比赛现场的照片会陆续补进来。</p>
+      </div>
+      <div class="shots-2">
+        <figure class="ph"><figcaption>01 · 活动现场 待替换</figcaption><span class="mono">4:3</span></figure>
+        <figure class="ph"><figcaption>02 · 活动现场 待替换</figcaption><span class="mono">4:3</span></figure>
+        <figure class="ph"><figcaption>03 · 活动现场 待替换</figcaption><span class="mono">4:3</span></figure>
+        <figure class="ph"><figcaption>04 · 活动现场 待替换</figcaption><span class="mono">4:3</span></figure>
+        <figure class="ph"><figcaption>05 · 活动现场 待替换</figcaption><span class="mono">4:3</span></figure>
+        <figure class="ph"><figcaption>06 · 活动现场 待替换</figcaption><span class="mono">4:3</span></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="join">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="title">加入我们。</h2>
+      </div>
+      <div class="join-2">
+        <div>
+          <p class="join-statement">想加入，或者只是想先看看，都可以先进群。</p>
+          <p class="join-num">1102691914</p>
+          <p class="join-copy">群号会随每轮招新轮换，二维码失效时以群号为准。平时的问题、赛事消息、部门日常，群里都聊。</p>
+        </div>
+        <div class="join-side">
+          <div class="qr-inline">
+            <div class="qr-box">招新群二维码<br>待替换</div>
+            <div>
+              <span class="mono">QQ GROUP</span>
+              <p class="qr-num" style="font-family:var(--font-mono);font-size:20px;margin-top:8px;">1102691914</p>
+              <p class="qr-note" style="font-size:11.5px;color:var(--muted);line-height:1.7;margin-top:4px;">群随每轮招新轮换<br>二维码图片可直接替换</p>
+            </div>
+          </div>
+          <div class="addr-2">
+            <address>
+              <span class="mono">三牌楼校区 / 210003</span>
+              <span>南京市鼓楼区新模范马路 66 号</span>
+            </address>
+            <address>
+              <span class="mono">仙林校区 / 210046</span>
+              <span>南京市亚东新城区文苑路 9 号</span>
+            </address>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top" aria-label="管院科协 首页">
+          <svg class="brand-mark" viewBox="0 0 25 25" aria-hidden="true">
+            <rect x="0.75" y="0.75" width="23.5" height="23.5" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+            <line x1="0.75" y1="12.5" x2="24.25" y2="12.5" stroke="currentColor" stroke-width="1"></line>
+            <rect class="mark-accent" x="12.5" y="0.75" width="11.75" height="11.75"></rect>
+          </svg>
+          <span class="brand-text">
+            <span class="brand-cn">管院科协</span>
+            <span class="brand-en">SOMAST</span>
+          </span>
+        </a>
+        <p class="lede" style="margin-top:16px;font-size:13px;max-width:34ch;">南京邮电大学管理学院科学与技术协会。由学院党委领导、学院团委指导。</p>
+      </div>
+      <div>
+        <h4>页面</h4>
+        <div class="foot-links">
+          <a href="#about">关于科协</a>
+          <a href="#departments">八部门</a>
+          <a href="#events">经典赛事</a>
+          <a href="#gallery">活动现场</a>
+          <a href="#join">加入我们</a>
+        </div>
+      </div>
+      <div>
+        <h4>联系</h4>
+        <div class="foot-links">
+          <span>招新 QQ 群：1102691914</span>
+          <span>三牌楼：新模范马路 66 号</span>
+          <span>仙林：文苑路 9 号</span>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 南京邮电大学管理学院科学与技术协会</span>
+      <span class="mono">SOMAST · NJUPT</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
