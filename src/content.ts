@@ -19,18 +19,19 @@ export const site = {
   qqGroup: "1102691914",
 };
 
+/** 顶部导航，三个页面 */
 export const nav = [
-  { label: "关于", href: "#about" },
-  { label: "部门", href: "#departments" },
-  { label: "赛事", href: "#events" },
-  { label: "现场", href: "#gallery" },
+  { label: "首页", to: "/" },
+  { label: "活动", to: "/activities" },
+  { label: "部门", to: "/departments" },
 ];
 
 export const hero = {
   kicker: site.tagline,
   title: ["把想法", "做成作品。"],
   sub: "三个中心、八个部门、多项经典赛事。从策划一场活动，到拿下一个奖项，都有人陪你走完。",
-  cta: { label: "了解八个部门", href: "#departments" },
+  cta: { label: "看看部门", to: "/departments" },
+  ctaSecondary: { label: "活动与现场", to: "/activities" },
   dossier: {
     title: "组织档案",
     code: "SOMAST",
@@ -300,6 +301,51 @@ export const join = {
   addressLabel: "校区地址",
   address: "南京市鼓楼区新模范马路 66 号",
   zip: "三牌楼校区 / 210003",
+};
+
+/** 首页底部的两个入口卡 */
+export const home = {
+  entries: [
+    {
+      no: "01",
+      title: "活动与现场",
+      desc: "多项经典赛事、日常品牌活动，还有招新、比赛、晚会的照片。",
+      to: "/activities",
+      action: "看活动",
+    },
+    {
+      no: "02",
+      title: "组织与部门",
+      desc: "三个中心、八个部门，治理结构与每个部门平时在做什么。",
+      to: "/departments",
+      action: "看部门",
+    },
+  ],
+};
+
+export const activitiesPage = {
+  kicker: "活动 · ACTIVITIES",
+  title: "赛事与现场。",
+  lede: "从院赛到校赛，从策划到现场：科协承办或协办的大型赛事、日常品牌活动，以及活动照片都在这一页。",
+  galleryTitle: "照片墙。",
+};
+
+export const departmentsPage = {
+  kicker: "部门 · DEPARTMENTS",
+  title: "三个中心，八个部门。",
+  lede: "科研、办公、活动三个中心分管八个部门。治理结构、组织架构和每个部门平时做什么，都在这一页。",
+  govTitle: "治理结构 / GOVERNANCE",
+  gov: [
+    { num: "01", role: "主席", note: "负责各部门协调与各类活动的组织安排" },
+    { num: "02", role: "副主席", note: "管理社团人员、规章制度与财务报账" },
+    { num: "03", role: "主任", note: "分别管理科研中心、办公中心、活动中心" },
+  ],
+};
+
+/** 每页底部的加入条 */
+export const joinStrip = {
+  kicker: "加入我们",
+  title: "想加入，或者只是想先看看，都可以先进群。",
 };
 
 export const footer = {
